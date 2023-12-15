@@ -31,7 +31,7 @@
 
 
 /**
- * Constant representing two PI
+ * Constant representing two PIs
  */
 #define TWO_PI 6.283185307179586476925286766559f
 

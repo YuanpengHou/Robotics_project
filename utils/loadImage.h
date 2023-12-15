@@ -28,7 +28,7 @@
 
 
 /**
- * Load a color image from disk into CUDA memory with alpha.
+ * Load a color image from disk into CUDA memory with alphas.
  * This function loads the image into shared CPU/GPU memory, using the functions from cudaMappedMemory.h
  *
  * @param filename Path to the image file on disk.

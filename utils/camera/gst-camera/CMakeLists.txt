@@ -1,4 +1,4 @@
-
+# GLOB
 file(GLOB gstCameraSources *.cpp)
 file(GLOB gstCameraIncludes *.h )
 

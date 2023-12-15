@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-# determine if jetson-utils is being built as a submodule inside another repo,
+# determine if jetson-utils is being built as a submodule inside another repo
 # or if it's being build standalone (if the later, we need to do some configuration)
 get_directory_property(hasParent PARENT_DIRECTORY)
 

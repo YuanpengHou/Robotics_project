@@ -1,4 +1,4 @@
-
+# GLOB
 file(GLOB glDisplayTestSources *.cpp)
 file(GLOB glDisplayTestIncludes *.h )
 

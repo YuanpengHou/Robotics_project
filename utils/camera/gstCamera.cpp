@@ -1,4 +1,4 @@
-
+// camera
 
 #include "gstCamera.h"
 #include "gstUtility.h"

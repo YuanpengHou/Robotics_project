@@ -29,7 +29,7 @@
 
 
 /**
- * Generate a floating-point random number within the specified range
+ * Generate a floating-point random number within a specified range
  */
 inline float randf( float range_min=0.0f, float range_max=1.0f )		{ return ((float(rand()) / RAND_MAX) * (range_max - range_min)) + range_min; }
 

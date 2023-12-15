@@ -1,4 +1,4 @@
-
+# GLOB
 file(GLOB v4l2ConsoleSources *.cpp)
 file(GLOB v4l2ConsoleIncludes *.h )
 

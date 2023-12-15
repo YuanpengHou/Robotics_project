@@ -1,5 +1,5 @@
 /*
- * 2D deepRL example
+ * 2D deepRL 
  */
 
 #include "deepRL.h"
