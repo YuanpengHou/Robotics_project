@@ -1,9 +1,9 @@
-#!/usr/bin/python
+# /usr/bin/python
 
+import torch
 print('hello from test-torch.py script')
 print('importing torch...')
 
-import torch
 
 print('import complete.')
 print('cuda available: ' + str(torch.cuda.is_available()))
@@ -17,12 +17,9 @@ c = a + b
 print(c)
 
 
-def foo( x ):
-	print('tensor interop test')
-	print(x)
-	#return x.dim()
-	#return x.size()[0]
-	#return x.sum()
-	return x.std()
-
-
+def foo(x):
+    print('tensor interop test')
+    print(x)
+    # return x.dim()
+    # return x.size()[0]
+    return x.std()

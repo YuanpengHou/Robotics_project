@@ -1,6 +1,6 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
+
+// http://github.com/dusty-nv/jetson-reinforcement
+
 
 #ifndef __DEEP_REINFORCEMENT_LEARNER_H_
 #define __DEEP_REINFORCEMENT_LEARNER_H_

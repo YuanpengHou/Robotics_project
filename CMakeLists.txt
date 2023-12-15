@@ -9,7 +9,6 @@ set(BUILD_PYTORCH "NO" CACHE BOOL "If YES, will build PyTorch and PyTorch exampl
 set(USE_PYTHON "YES" CACHE BOOL "If YES, will link to PyTorch and PyTorch examples in sandbox")
 set(USE_LUA "NO" CACHE BOOL "If YES, will build LUA, Torch, and Torch examples")
 
-	
 # configure CUDA
 find_package(CUDA)
 

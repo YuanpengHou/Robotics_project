@@ -1,7 +1,4 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
- 
+
 #include "cudaUtility.h"
 
 

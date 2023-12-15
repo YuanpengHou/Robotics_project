@@ -1,6 +1,3 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
 
 #ifndef __PY_TORCH_H_
 #define __PY_TORCH_H_

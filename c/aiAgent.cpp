@@ -1,6 +1,4 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
+
 
 #include "aiAgent.h"
 

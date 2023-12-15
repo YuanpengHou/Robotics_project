@@ -1,5 +1,4 @@
 
--- this is a one-line comment, beginning after the double-dash
 print('HELLO from LUA!')
 
 --[[ this is

@@ -1,6 +1,6 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
+
+// http://github.com/dusty-nv/jetson-reinforcement
+
 
 #include "pyTensor.h"
 #include "pyTorch.h"

@@ -10,7 +10,7 @@
 
 
 /**
- * Deep Q-Learner Agent 
+ * Deep Q-Learner 
  */
 class dqnAgent : public rlAgent
 {

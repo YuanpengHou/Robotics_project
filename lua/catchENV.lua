@@ -1,6 +1,5 @@
---
+
 -- http://github.com/dusty-nv/jetson-reinforcement
---
 
 math.randomseed(os.time())
 
@@ -126,7 +125,7 @@ function Memory(maxMemory, discount)
                 target[memoryInput.action] = memoryInput.reward
             else
                 -- reward + discount(gamma) * max_a' Q(s',a')
-                -- We are setting the Q-value for the action to  r + ?max a’ Q(s’, a’). The rest stay the same
+                -- We are setting the Q-value for the action to  r + ?max aï¿½ Q(sï¿½, aï¿½). The rest stay the same
                 -- to give an error of 0 for those outputs.
                 target[memoryInput.action] = memoryInput.reward + discount * nextStateMaxQ
             end

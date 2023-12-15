@@ -1,24 +1,16 @@
-# -*- coding: utf-8 -*-
+
 """
 Reinforcement Learning (DQN) tutorial
 =====================================
 **Author**: `Adam Paszke <https://github.com/apaszke>`_
 
-
 This tutorial shows how to use PyTorch to train a Deep Q Learning (DQN) agent
 on the CartPole-v0 task from the `OpenAI Gym <https://gym.openai.com/>`__.
-
-**Task**
 
 The agent has to decide between two actions - moving the cart left or
 right - so that the pole attached to it stays upright. You can find an
 official leaderboard with various algorithms and visualizations at the
 `Gym website <https://gym.openai.com/envs/CartPole-v0>`__.
-
-.. figure:: /_static/img/cartpole.gif
-   :alt: cartpole
-
-   cartpole
 
 As the agent observes the current state of the environment and chooses
 an action, the environment *transitions* to a new state, and also
@@ -39,7 +31,6 @@ the current screen patch and the previous one. This will allow the agent
 to take the velocity of the pole into account from one image.
 
 **Packages**
-
 
 First, let's import needed packages. Firstly, we need
 `gym <https://gym.openai.com/docs>`__ for the environment
@@ -187,7 +178,7 @@ class ReplayMemory(object):
 #
 # .. math::
 #
-#    \mathcal{L} = \frac{1}{|B|}\sum_{(s, a, s', r) \ \in \ B} \mathcal{L}(\delta) 
+#    \mathcal{L} = \frac{1}{|B|}\sum_{(s, a, s', r) \ \in \ B} \mathcal{L}(\delta)
 #
 # .. math::
 #
@@ -272,6 +263,7 @@ def get_screen():
     screen = torch.from_numpy(screen)
     # Resize, and add a batch dimension (BCHW)
     return resize(screen).unsqueeze(0).type(Tensor)
+
 
 env.reset()
 plt.figure()
@@ -434,6 +426,7 @@ def optimize_model():
 #
 # Below, `num_episodes` is set small. You should download
 # the notebook and run lot more epsiodes.
+
 
 num_episodes = 1000
 for i_episode in range(num_episodes):

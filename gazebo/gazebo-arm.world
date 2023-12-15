@@ -23,8 +23,6 @@
 		<uri>model://ground_plane</uri>
 	</include>
 
-
-	<!--             -->
 	<!-- ARM/GRIPPER -->
 	<!--             -->
 	<model name="arm">

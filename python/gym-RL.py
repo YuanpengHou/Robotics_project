@@ -23,7 +23,6 @@ parser.add_argument('--log-interval', type=int, default=10, metavar='N',
                     help='interval between training status logs (default: 10)')
 args = parser.parse_args()
 
-# print(gym.envs.registry.all())
 
 # if gpu is to be used
 use_cuda = torch.cuda.is_available()
@@ -88,11 +87,13 @@ def finish_episode():
         R = r + args.gamma * R
         rewards.insert(0, R)
     rewards = torch.Tensor(rewards)
-    rewards = (rewards - rewards.mean()) / (rewards.std() + np.finfo(np.float32).eps)
+    rewards = (rewards - rewards.mean()) / \
+        (rewards.std() + np.finfo(np.float32).eps)
     for action, r in zip(policy.saved_actions, rewards):
         action.reinforce(r)
     optimizer.zero_grad()
-    autograd.backward(policy.saved_actions, [None for _ in policy.saved_actions])
+    autograd.backward(policy.saved_actions, [
+                      None for _ in policy.saved_actions])
     optimizer.step()
     del policy.rewards[:]
     del policy.saved_actions[:]
@@ -101,9 +102,9 @@ def finish_episode():
 running_reward = 10
 for i_episode in count(1):
     state = env.reset()
-    for t in range(10000): # Don't infinite loop while learning
+    for t in range(10000):  # Don't infinite loop while learning
         action = select_action(state)
-        state, reward, done, _ = env.step(action[0,0])
+        state, reward, done, _ = env.step(action[0, 0])
         if args.render:
             env.render()
         policy.rewards.append(reward)

@@ -50,6 +50,8 @@ print('observation dimensions: ' + str(observation_dim))
 
 
 SavedAction = namedtuple('SavedAction', ['action', 'value'])
+
+
 class Policy(nn.Module):
     def __init__(self):
         super(Policy, self).__init__()
@@ -93,11 +95,13 @@ def finish_episode():
         R = r + args.gamma * R
         rewards.insert(0, R)
     rewards = torch.Tensor(rewards)
-    rewards = (rewards - rewards.mean()) / (rewards.std() + np.finfo(np.float32).eps)
+    rewards = (rewards - rewards.mean()) / \
+        (rewards.std() + np.finfo(np.float32).eps)
     for (action, value), r in zip(saved_actions, rewards):
-        reward = r - value.data[0,0]
+        reward = r - value.data[0, 0]
         action.reinforce(reward)
-        value_loss += F.smooth_l1_loss(value, Variable(torch.Tensor([r]).cuda()))
+        value_loss += F.smooth_l1_loss(value,
+                                       Variable(torch.Tensor([r]).cuda()))
     optimizer.zero_grad()
     final_nodes = [value_loss] + list(map(lambda p: p.action, saved_actions))
     gradients = [torch.ones(1).cuda()] + [None] * len(saved_actions)
@@ -110,9 +114,9 @@ def finish_episode():
 running_reward = 10
 for i_episode in count(1):
     state = env.reset()
-    for t in range(30000): # Don't infinite loop while learning
+    for t in range(30000):  # Don't infin loop while learning
         action = select_action(state)
-        state, reward, done, _ = env.step(action[0,0])
+        state, reward, done, _ = env.step(action[0, 0])
         if args.render:
             env.render()
         model.rewards.append(reward)

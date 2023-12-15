@@ -1,6 +1,6 @@
 --
 -- deepRL - environment verification script
---
+
 
 print('[deepRL]  hello from within Torch/Lua environment (time=' .. os.clock() .. ')')
 print('[deepRL]  loading Lua packages...')

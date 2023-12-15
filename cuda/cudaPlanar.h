@@ -1,6 +1,3 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
 
 #ifndef __CUDA_PLANAR_IMAGE_H_
 #define __CUDA_PLANAR_IMAGE_H_

@@ -1,5 +1,4 @@
 
--- this is a one-line comment, beginning after the double-dash
 print('testing LUAJIT51 scripting language')
 
 --[[ this is

@@ -1,11 +1,7 @@
-/*
- * deepRL
- */
 
 #include "devInput.h"
 
-
-int main( int argc, char** argv )
+int main(int argc, char **argv)
 {
 	printf("deepRL-input\n");
 
@@ -14,20 +10,19 @@ int main( int argc, char** argv )
 	InputDevices::Enumerate(devices);
 
 	// create input manager device
-	InputDevices* mgr = InputDevices::Create();
+	InputDevices *mgr = InputDevices::Create();
 
-	if( !mgr )
+	if (!mgr)
 		return 0;
 
 	// enable verbose debug text
 	mgr->Debug();
 
 	// poll for updates
-	while(true)
+	while (true)
 	{
 		mgr->Poll(0);
 	}
 
 	return 0;
 }
-

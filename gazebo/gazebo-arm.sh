@@ -1,4 +1,4 @@
-#!/bin/sh
+#/bin/sh
 
 echo " "
 echo "configuring gazebo7 plugin paths"

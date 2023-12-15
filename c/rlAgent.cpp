@@ -1,6 +1,3 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
 
 #include "rlAgent.h"
 #include "pyTorch.h"

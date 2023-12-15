@@ -1,6 +1,3 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
 
 #ifndef __AI_AGENT_H_
 #define __AI_AGENT_H_

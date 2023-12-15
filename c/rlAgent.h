@@ -1,10 +1,6 @@
-/*
- * http://github.com/dusty-nv/jetson-reinforcement
- */
 
 #ifndef __REINFORCEMENT_LEARNING_AGENT_H_
 #define __REINFORCEMENT_LEARNING_AGENT_H_
-
 
 #include <stdio.h>
 #include <stdint.h>
@@ -12,7 +8,6 @@
 
 #include "aiAgent.h"
 #include "pyTensor.h"
-
 
 /**
  * Default name of the Python module to load
@@ -31,7 +26,7 @@
 /**
  * Default name of the Python function from the user's module
  * which recieves rewards and performs training.
- * The expected reward function is of the form 
+ * The expected reward function is of the form
  * `def next_reward(state, reward, new_episode):`, where the
  * function returns the predicted action and accepts the reward.
  */
@@ -47,7 +42,6 @@
  */
 #define DEFAULT_SAVE_MODEL "save_model"
 
-
 /**
  * Base class for deep reinforcement learning agent,
  * using Python & pyTorch underneath with C FFI.
@@ -58,23 +52,23 @@ public:
 	/**
 	 * Create a new instance of a module for training an agent.
 	 */
-	static rlAgent* Create( uint32_t numInputs, uint32_t numActions, 
-					    const char* module=DEFAULT_RL_MODULE,
-					    const char* nextAction=DEFAULT_NEXT_ACTION, 
-					    const char* nextReward=DEFAULT_NEXT_REWARD,
-					    const char* loadModel=DEFAULT_LOAD_MODEL,
-					    const char* saveModel=DEFAULT_SAVE_MODEL );
+	static rlAgent *Create(uint32_t numInputs, uint32_t numActions,
+						   const char *module = DEFAULT_RL_MODULE,
+						   const char *nextAction = DEFAULT_NEXT_ACTION,
+						   const char *nextReward = DEFAULT_NEXT_REWARD,
+						   const char *loadModel = DEFAULT_LOAD_MODEL,
+						   const char *saveModel = DEFAULT_SAVE_MODEL);
 
 	/**
 	 * Create a new instance of a module for training an agent.
 	 */
-	static rlAgent* Create( uint32_t width, uint32_t height, 
-					    uint32_t channels, uint32_t numActions, 
-					    const char* module=DEFAULT_RL_MODULE,
-					    const char* nextAction=DEFAULT_NEXT_ACTION, 
-					    const char* nextReward=DEFAULT_NEXT_REWARD,
-					    const char* loadModel=DEFAULT_LOAD_MODEL,
-					    const char* saveModel=DEFAULT_SAVE_MODEL );
+	static rlAgent *Create(uint32_t width, uint32_t height,
+						   uint32_t channels, uint32_t numActions,
+						   const char *module = DEFAULT_RL_MODULE,
+						   const char *nextAction = DEFAULT_NEXT_ACTION,
+						   const char *nextReward = DEFAULT_NEXT_REWARD,
+						   const char *loadModel = DEFAULT_LOAD_MODEL,
+						   const char *saveModel = DEFAULT_SAVE_MODEL);
 
 	/**
 	 * Destructor
@@ -84,22 +78,22 @@ public:
 	/**
 	 * From the input state, predict the next action
 	 */
-	virtual bool NextAction( Tensor* state, int* action );
+	virtual bool NextAction(Tensor *state, int *action);
 
 	/**
 	 * Issue the next reward and training iteration
 	 */
-	virtual bool NextReward( float reward, bool end_episode );
+	virtual bool NextReward(float reward, bool end_episode);
 
 	/**
 	 * Load model checkpoint
 	 */
-	virtual bool LoadCheckpoint( const char* filename );
+	virtual bool LoadCheckpoint(const char *filename);
 
 	/**
- 	 * Save model checkpoint
+	 * Save model checkpoint
 	 */
-	virtual bool SaveCheckpoint( const char* filename );
+	virtual bool SaveCheckpoint(const char *filename);
 
 	/**
 	 * Globally load Python scripting interpreter.
@@ -112,48 +106,48 @@ public:
 	/**
 	 * Load Python script module
 	 */
-	bool LoadModule( const char* module );
+	bool LoadModule(const char *module);
 
 	/**
 	 * Load Python script module (with arguments)
 	 */
-	bool LoadModule( const char* module, int argc, char** argv );
+	bool LoadModule(const char *module, int argc, char **argv);
 
 	/**
 	 * GetType
 	 */
-	virtual TypeID GetType() const 	{ return TYPE_RL; }
+	virtual TypeID GetType() const { return TYPE_RL; }
 
 	/**
- 	 * TypeID
+	 * TypeID
 	 */
 	const TypeID TYPE_RL = TYPE_AI | (1 << 1);
 
 protected:
 	rlAgent();
 
-	virtual bool Init( uint32_t width, uint32_t height, uint32_t channels, 
-				    uint32_t numActions, const char* module, 
-				    const char* nextAction, const char* nextReward,
-				    const char* loadModel, const char* saveModel,
-				    const char* optimizer="RMSprop", float learning_rate=0.001, 
-				    uint32_t replay_mem=10000, uint32_t batch_size=64, float gamma=0.9, 
-				    float epsilon_start=0.9,  float epsilon_end=0.05,  float epsilon_decay=200,
-				    bool use_lstm=true, int lstm_size=256, bool allow_random=true, bool debug_mode=false);
+	virtual bool Init(uint32_t width, uint32_t height, uint32_t channels,
+					  uint32_t numActions, const char *module,
+					  const char *nextAction, const char *nextReward,
+					  const char *loadModel, const char *saveModel,
+					  const char *optimizer = "RMSprop", float learning_rate = 0.001,
+					  uint32_t replay_mem = 10000, uint32_t batch_size = 64, float gamma = 0.9,
+					  float epsilon_start = 0.9, float epsilon_end = 0.05, float epsilon_decay = 200,
+					  bool use_lstm = true, int lstm_size = 256, bool allow_random = true, bool debug_mode = false);
 #ifdef USE_LUA
-	lua_State* L;		/**< Lua/Torch7 operating environment */
-	THCState*  THC;	/**< cutorch state */
+	lua_State *L;  /**< Lua/Torch7 operating environment */
+	THCState *THC; /**< cutorch state */
 #endif
 
-	//bool mNewEpisode;
+	// bool mNewEpisode;
 
 	uint32_t mInputWidth;
 	uint32_t mInputHeight;
 	uint32_t mNumInputs;
 	uint32_t mNumActions;
-	
-	Tensor* mRewardTensor;
-	Tensor* mActionTensor;
+
+	Tensor *mRewardTensor;
+	Tensor *mActionTensor;
 
 	enum
 	{
@@ -165,13 +159,12 @@ protected:
 	};
 
 	std::string mModuleName;
-	void*	  mModuleObj;
-	void* 	  mFunction[NUM_FUNCTIONS];
-	void*	  mFunctionArgs[NUM_FUNCTIONS];
+	void *mModuleObj;
+	void *mFunction[NUM_FUNCTIONS];
+	void *mFunctionArgs[NUM_FUNCTIONS];
 	std::string mFunctionName[NUM_FUNCTIONS];
 
 	static bool scriptingLoaded;
 };
-
 
 #endif
